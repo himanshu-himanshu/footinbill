@@ -54,7 +54,7 @@ const Welcome = () => {
             </TouchableOpacity>
           </View>
           <View className="w-[70%] shadow-md bg-[#B392AC] rounded-full">
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate("Signin")}>
               <Text className="text-center px-10 py-4  text-white font-bold text-lg rounded-full">
                 Sign Up
               </Text>

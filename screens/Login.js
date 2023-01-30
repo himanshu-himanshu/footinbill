@@ -27,7 +27,7 @@ const Login = () => {
       <SafeAreaView>
         <View className="w-full h-full">
           {/********* Header View **********/}
-          <View className="flex w-full justify-center items-center py-12">
+          <View className="flex w-full justify-center items-center pt-8 pb-12">
             <Text className="text-3xl font-Raleway font-semibold tracking-wide py-4">
               Log In
             </Text>
@@ -41,6 +41,7 @@ const Login = () => {
             <TextInput
               secureTextEntry={false}
               placeholder="Email"
+              name="email"
               className="p-4 text-xl text-gray-700"
             />
           </View>
@@ -48,6 +49,7 @@ const Login = () => {
             <TextInput
               secureTextEntry={true}
               placeholder="Password"
+              name="password"
               className="p-4 text-xl text-gray-700"
             />
           </View>
@@ -60,20 +62,23 @@ const Login = () => {
           {/********* Login Button View **********/}
           <View className="w-[90%] mx-auto shadow-md bg-[#b5e48c] rounded-sm mt-12">
             <TouchableOpacity>
-              <Text className="text-center px-10 py-4 text-gray-700 capitalize font-bold text-xl rounded-full">
-                Log In
+              <Text className="text-center px-10 py-4 text-gray-700 font-bold text-xl rounded-full">
+                Log in
               </Text>
             </TouchableOpacity>
           </View>
 
           {/********* Signup View **********/}
           <View className="flex w-[90%] justify-end items-center mt-8 mx-auto">
-            <TouchableOpacity className="flex flex-row space-x-2">
+            <TouchableOpacity
+              className="flex flex-row space-x-2"
+              onPress={() => navigation.navigate("Signin")}
+            >
               <Text className="text-gray-500 tracking-wide">
                 Don't have an account?
               </Text>
               <Text className="text-[#52b69a] font-bold tracking-wide">
-                Sign Up
+                Sign up
               </Text>
             </TouchableOpacity>
           </View>
