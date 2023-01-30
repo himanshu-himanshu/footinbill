@@ -26,6 +26,7 @@ const Login = () => {
     <View className="w-full h-screen bg-white">
       <SafeAreaView>
         <View className="w-full h-full">
+          {/********* Header View **********/}
           <View className="flex w-full justify-center items-center py-12">
             <Text className="text-3xl font-Raleway font-semibold tracking-wide py-4">
               Log In
@@ -34,6 +35,8 @@ const Login = () => {
               Please login to continue using our app
             </Text>
           </View>
+
+          {/********* Email & Password View **********/}
           <View className="flex w-[90%] justify-center border border-gray-300 mx-auto my-2 rounded-sm">
             <TextInput
               secureTextEntry={false}
@@ -53,6 +56,8 @@ const Login = () => {
               <Text className="text-gray-400">Forgot Password?</Text>
             </TouchableOpacity>
           </View>
+
+          {/********* Login Button View **********/}
           <View className="w-[90%] mx-auto shadow-md bg-[#b5e48c] rounded-sm mt-12">
             <TouchableOpacity>
               <Text className="text-center px-10 py-4 text-gray-700 capitalize font-bold text-xl rounded-full">
@@ -60,6 +65,8 @@ const Login = () => {
               </Text>
             </TouchableOpacity>
           </View>
+
+          {/********* Signup View **********/}
           <View className="flex w-[90%] justify-end items-center mt-8 mx-auto">
             <TouchableOpacity className="flex flex-row space-x-2">
               <Text className="text-gray-500 tracking-wide">
@@ -70,23 +77,20 @@ const Login = () => {
               </Text>
             </TouchableOpacity>
           </View>
+
+          {/********* Social Media View **********/}
           <View className="flex w-full justify-center items-center mt-24">
             <Text className="text-gray-400 tracking-wide py-4">Or</Text>
             <View className="flex flex-row space-x-4">
-              <View className="bg-[#34A0A4] p-4 w-[60px] h-[60px] rounded-full flex justify-center items-center">
+              <TouchableOpacity className="bg-[#34A0A4] p-4 w-[60px] h-[60px] rounded-full flex justify-center items-center">
                 <Icon name="facebook" size={25} color="#b5e48c" />
-              </View>
-              <View className="bg-[#34A0A4] p-4 w-[60px] h-[60px] rounded-full flex justify-center items-center">
-                <Icon
-                  name="twitter"
-                  size={25}
-                  color="#b5e48c"
-                  className="shadow-lg"
-                />
-              </View>
-              <View className="bg-[#34A0A4] p-4 w-[60px] h-[60px] rounded-full flex justify-center items-center">
+              </TouchableOpacity>
+              <TouchableOpacity className="bg-[#34A0A4] p-4 w-[60px] h-[60px] rounded-full flex justify-center items-center">
+                <Icon name="twitter" size={25} color="#b5e48c" />
+              </TouchableOpacity>
+              <TouchableOpacity className="bg-[#34A0A4] p-4 w-[60px] h-[60px] rounded-full flex justify-center items-center">
                 <Icon name="github" size={25} color="#b5e48c" />
-              </View>
+              </TouchableOpacity>
             </View>
           </View>
         </View>
@@ -102,96 +106,142 @@ export default Login;
  */
 
 /*
-import React, {useEffect} from 'react';
-import isEmpty from './app/validations/isEmpty';
-import {useSelector} from 'react-redux';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import WelcomeScreen from './app/screens/welcomeScreen';
-import ProfileScreen from './app/screens/profile/profileScreen';
-import UpdatePasswordScreen from './app/screens/password/updatePasswordScreen';
-import ForgotPasswordScreen from './app/screens/password/forgotPasswordScreen';
-import VerifyForgotPasswordOtpScreen from './app/screens/password/verifyForgotPasswordOtpScreen';
-import SettingsScreen from './app/screens/settings/settingsScreen';
-import LoginScreen from './app/screens/auth/loginScreen';
-import RegisterScreen from './app/screens/auth/registerScreen';
-import SelectQuizCategoryScreen from './app/screens/quiz/selectQuizCategoryScreen';
-import SelectQuizViaCategoryIdScreen from './app/screens/quiz/selectQuizViaCategoryIdScreen';
-import ScoreBoardScreen from './app/screens/quiz/scoreBoardScreen';
-import HomeScreen from './app/screens/homeScreen';
+import React, {useState} from 'react';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  ScrollView,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
+import {loginUser} from '../../actions/authAction';
+import {useDispatch} from 'react-redux';
+import {Formik} from 'formik';
+import * as Yup from 'yup';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import AsyncStorage from '@react-native-community/async-storage';
 
-const App = () => {
-  let auth = useSelector(state => state.auth);
-  let Stack = createNativeStackNavigator();
-  let isLoggedIn = isEmpty(auth) ? false : true;
+let validationSchema = Yup.object({
+  email: Yup.string()
+    .trim()
+    .email('Not a valid email.')
+    .required('Email is required.'),
+  password: Yup.string().required('Password is required.'),
+});
 
-  console.log('8888888 888888 route', Stack.Navigator);
+export const LoginScreen = ({navigation}) => {
+  const dispatch = useDispatch();
+  // let formObject = {email: '', password: ''};
+  let formObject = {email: 'test@yopmail.com', password: '12345678'};
+
+  let performLogin = async values => {
+    let payload = {
+      email: values.email,
+      password: values.password,
+    };
+    let response = await dispatch(loginUser(payload));
+    if (response && response.success) {
+      navigation.navigate('homeScreen');
+      AsyncStorage.setItem('userToken', response.token);
+    }
+  };
+
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="loginScreen"
-          options={isLoggedIn ? {title: 'Home'} : {title: 'Login'}}
-          component={isLoggedIn ? HomeScreen : LoginScreen}
-        />
-        <Stack.Screen
-          name="homeScreen"
-          options={isLoggedIn ? {title: 'Home'} : {title: 'Login'}}
-          component={isLoggedIn ? HomeScreen : LoginScreen}
-        />
-        <Stack.Screen
-          name="forgotPasswordScreen"
-          options={isLoggedIn ? {title: 'Home'} : {title: 'Forgot Password'}}
-          component={isLoggedIn ? HomeScreen : ForgotPasswordScreen}
-        />
-        <Stack.Screen
-          name="verifyForgotPasswordOtpScreen"
-          options={isLoggedIn ? {title: 'Home'} : {title: 'Verify OTP'}}
-          component={isLoggedIn ? HomeScreen : VerifyForgotPasswordOtpScreen}
-        />
-        <Stack.Screen
-          name="updatePasswordScreen"
-          options={{title: 'Update Password'}}
-          component={UpdatePasswordScreen}
-        />
-        <Stack.Screen
-          name="settingsScreen"
-          options={isLoggedIn ? {title: 'Settings'} : {title: 'Login'}}
-          component={isLoggedIn ? SettingsScreen : LoginScreen}
-        />
-        <Stack.Screen
-          name="welcomeScreen"
-          options={isLoggedIn ? {title: 'Welcome'} : {title: 'Login'}}
-          component={isLoggedIn ? WelcomeScreen : LoginScreen}
-        />
-        <Stack.Screen
-          name="profileScreen"
-          options={isLoggedIn ? {title: 'My Profile'} : {title: 'Login'}}
-          component={isLoggedIn ? ProfileScreen : LoginScreen}
-        />
-        <Stack.Screen
-          name="registerScreen"
-          options={isLoggedIn ? {title: 'Home'} : {title: 'Register'}}
-          component={isLoggedIn ? HomeScreen : RegisterScreen}
-        />
-        <Stack.Screen
-          name="selectQuizCategoryScreen"
-          options={isLoggedIn ? {title: 'Quiz Category'} : {title: 'Login'}}
-          component={isLoggedIn ? SelectQuizCategoryScreen : LoginScreen}
-        />
-        <Stack.Screen
-          name="selectQuizViaCategoryIdScreen"
-          options={isLoggedIn ? {title: 'The Quiz'} : {title: 'Login'}}
-          component={isLoggedIn ? SelectQuizViaCategoryIdScreen : LoginScreen}
-        />
-        <Stack.Screen
-          name="scoreBoardScreen"
-          options={isLoggedIn ? {title: 'My Scoreboard'} : {title: 'Login'}}
-          component={isLoggedIn ? ScoreBoardScreen : LoginScreen}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <ScrollView contentContainerStyle={styles.body}>
+      <Formik
+        initialValues={formObject}
+        validationSchema={validationSchema}
+        onSubmit={(values, formikActions) => {
+          performLogin(values);
+        }}>
+        {({
+          values,
+          errors,
+          touched,
+          handleChange,
+          handleBlur,
+          handleSubmit,
+          isSubmitting,
+        }) => {
+          let {email, password} = values;
+          return (
+            <>
+              <View style={styles.body}>
+                <View style={styles.imageView}>
+                  <Image
+                    source={require('../../../assets/images/image2.jpg')}
+                    style={styles.image}
+                  />
+                </View>
+
+                <View style={styles.brandView}>
+                  <Text style={[styles.brandText, styles.shadowSm]}>
+                    Quizkaro
+                  </Text>
+                </View>
+                <View style={styles.welcomeView}>
+                  <Text style={styles.welcomeText}>
+                    Welcome back, log in into your account
+                  </Text>
+                </View>
+                <View style={styles.inputBox}>
+                  {touched.email && errors.email ? (
+                    <Text style={styles.error}>{errors.email}</Text>
+                  ) : (
+                    ''
+                  )}
+                </View>
+                <View style={styles.inputBox}>
+                  <TextInput
+                    style={styles.input}
+                    autoCapitalize="none"
+                    onChangeText={handleChange('password')}
+                    onBlur={handleBlur('password')}
+                    secureTextEntry={true}
+                    placeholder="Password"
+                  />
+                  {touched.password && errors.password ? (
+                    <Text style={styles.error}>{errors.password}</Text>
+                  ) : (
+                    ''
+                  )}
+                </View>
+                <View style={[styles.button, styles.shadowSm]}>
+                  <TouchableOpacity
+                    onPress={
+                      isSubmitting == false ? handleSubmit : handleSubmit
+                    }>
+                    <Text style={styles.buttonText}>Login</Text>
+                  </TouchableOpacity>
+                </View>
+
+                <View style={styles.extraInputBox}>
+                  <TouchableOpacity
+                    onPress={() => navigation.navigate('forgotPasswordScreen')}>
+                    <Text style={styles.forgotPasswordText}>
+                      Reset Password
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+
+                <View style={[styles.inputBox, styles.signUpView]}>
+                  <Text style={styles.bottomText}>Don't have an account ?</Text>
+                  <TouchableOpacity
+                    onPress={() => navigation.navigate('registerScreen')}>
+                    <Text style={styles.signUp}>Sign Up</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+            </>
+          );
+        }}
+      </Formik>
+    </ScrollView>
   );
 };
-export default App;
-*/
+
+export default LoginScreen;
+
+ */
