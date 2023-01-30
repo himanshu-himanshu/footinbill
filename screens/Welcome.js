@@ -38,10 +38,6 @@ const Welcome = () => {
           >
             FootInBill
           </Text>
-          {/* <Text className="flex justify-center items-center p-2 font-semibold uppercase text-slate-600">
-            <Icon name="dollar" size={15} />
-            plitting made effortless
-          </Text> */}
         </View>
         <View className=" p-4 flex flex-col justify-center items-center">
           <Text
@@ -51,7 +47,7 @@ const Welcome = () => {
             Splitting made effortless, Join now
           </Text>
           <View className="w-[70%] mb-4 border-l-2 border-t border-r border-b-4 border-[#B392AC] shadow-md rounded-full">
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate("Login")}>
               <Text className="text-center px-10 py-4 text-[#B392AC] font-bold text-lg">
                 Log In
               </Text>
