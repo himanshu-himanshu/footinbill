@@ -29,7 +29,7 @@ const Login = () => {
           {/********* Header View **********/}
           <View className="flex w-full justify-center items-center pt-8 pb-12">
             <Text className="text-3xl font-Raleway font-semibold tracking-wide py-4">
-              Log In
+              Log in
             </Text>
             <Text className="font-light text-gray-700">
               Please login to continue using our app
@@ -53,7 +53,9 @@ const Login = () => {
               className="p-4 text-xl text-gray-700"
             />
           </View>
-          <View className="flex w-[90%] justify-end items-start mt-2 mx-auto">
+
+          {/********* Forgot password View **********/}
+          <View className="flex w-[90%] justify-end items-end mt-2 mx-auto">
             <TouchableOpacity>
               <Text className="text-gray-400">Forgot Password?</Text>
             </TouchableOpacity>
@@ -78,7 +80,7 @@ const Login = () => {
                 Don't have an account?
               </Text>
               <Text className="text-[#52b69a] font-bold tracking-wide">
-                Sign up
+                Sign in
               </Text>
             </TouchableOpacity>
           </View>

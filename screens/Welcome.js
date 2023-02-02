@@ -30,41 +30,41 @@ const Welcome = () => {
   return (
     <View className="w-full h-full bg-white relative">
       <SafeAreaView>
-        <View className="w-full p-4 flex flex-col justify-center items-center space-x-4 my-20">
-          <Icon name="paw" size={90} color="#B392AC" />
+        <View className="w-full p-4 flex flex-col justify-center items-center space-y-4 my-20">
+          <Icon name="paw" size={90} color="#99D98C" />
           <Text
-            className="text-2xl uppercase font-extrabold tracking-wider text-[#B392AC] pt-6"
+            className="text-2xl uppercase font-extrabold tracking-wider text-[#76C893] pt-4"
             style={{ fontFamily: "Raleway" }}
           >
             FootInBill
           </Text>
-        </View>
-        <View className=" p-4 flex flex-col justify-center items-center">
           <Text
             className="text-gray-600 mb-10"
             style={{ fontFamily: "Raleway" }}
           >
             Splitting made effortless, Join now
           </Text>
-          <View className="w-[70%] mb-4 border-l-2 border-t border-r border-b-4 border-[#B392AC] shadow-md rounded-full">
+        </View>
+        <View className=" p-4 flex flex-col justify-center items-center">
+          <View className="w-[70%] mb-4 border-2 border-[#b5e48c] shadow-md rounded-full">
             <TouchableOpacity onPress={() => navigation.navigate("Login")}>
-              <Text className="text-center px-10 py-4 text-[#B392AC] font-bold text-lg">
+              <Text className="text-center px-10 py-4 text-gray-600 font-bold text-lg">
                 Log In
               </Text>
             </TouchableOpacity>
           </View>
-          <View className="w-[70%] shadow-md bg-[#B392AC] rounded-full">
+          <View className="w-[70%] shadow-md bg-[#b5e48c] rounded-full">
             <TouchableOpacity onPress={() => navigation.navigate("Signin")}>
-              <Text className="text-center px-10 py-4  text-white font-bold text-lg rounded-full">
+              <Text className="text-center px-10 py-4  text-gray-700 font-bold text-lg rounded-full">
                 Sign Up
               </Text>
             </TouchableOpacity>
           </View>
         </View>
       </SafeAreaView>
-      <View className="bg-[#D1B3C4] h-[40px] w-full absolute bottom-20"></View>
-      <View className="bg-[#B392AC] h-[40px] w-full absolute bottom-10"></View>
-      <View className="bg-[#735D78] h-[40px] w-full absolute bottom-0"></View>
+      <View className="bg-[#99D98C] h-[40px] w-full absolute bottom-20"></View>
+      <View className="bg-[#76C893] h-[40px] w-full absolute bottom-10"></View>
+      <View className="bg-[#52B69A] h-[40px] w-full absolute bottom-0"></View>
     </View>
   );
 };
