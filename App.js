@@ -5,6 +5,7 @@ import Welcome from "./screens/Welcome";
 import Login from "./screens/Login";
 import Signin from "./screens/Signin";
 import ForgotPassword from "./screens/ForgotPassword";
+import VerifyOTP from "./screens/VerifyOTP";
 
 const Stack = createNativeStackNavigator();
 
@@ -19,6 +20,7 @@ export default function App() {
         <Stack.Screen name=" " component={Welcome} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
+        <Stack.Screen name="VerifyOTP" component={VerifyOTP} />
         <Stack.Screen name="Signin" component={Signin} />
       </Stack.Navigator>
     </NavigationContainer>

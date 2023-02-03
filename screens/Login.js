@@ -28,11 +28,11 @@ const Login = () => {
         <View className="w-full h-full">
           {/********* Header View **********/}
           <View className="flex w-full justify-center items-center pt-8 pb-12">
-            <Text className="text-3xl font-Raleway font-semibold tracking-wide py-4">
+            <Text className="text-3xl font-Raleway font-bold tracking-wide py-4">
               Log in
             </Text>
             <Text className="font-light text-gray-700">
-              Please login to continue using our app
+              Welcome back, login to continue
             </Text>
           </View>
 
@@ -88,7 +88,7 @@ const Login = () => {
           </View>
 
           {/********* Social Media View **********/}
-          <View className="flex w-full justify-center items-center mt-24">
+          <View className="flex w-full justify-center items-center mt-20">
             <Text className="text-gray-400 tracking-wide py-4">Or</Text>
             <View className="flex flex-row space-x-4">
               <TouchableOpacity className="bg-[#34A0A4] p-4 w-[60px] h-[60px] rounded-full flex justify-center items-center">
