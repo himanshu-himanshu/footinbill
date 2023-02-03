@@ -1,11 +1,10 @@
-import { StatusBar } from "expo-status-bar";
-import { SafeAreaView, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import Welcome from "./screens/Welcome";
 import Login from "./screens/Login";
 import Signin from "./screens/Signin";
+import ForgotPassword from "./screens/ForgotPassword";
 
 const Stack = createNativeStackNavigator();
 
@@ -19,6 +18,7 @@ export default function App() {
       >
         <Stack.Screen name=" " component={Welcome} />
         <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
         <Stack.Screen name="Signin" component={Signin} />
       </Stack.Navigator>
     </NavigationContainer>

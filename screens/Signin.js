@@ -42,7 +42,7 @@ const Signin = () => {
               secureTextEntry={false}
               placeholder="Username"
               name="username"
-              className="p-4 text-xl text-gray-700"
+              className="p-4 text-xl text-gray-600"
             />
           </View>
           <View className="flex w-[90%] justify-center border border-gray-300 mx-auto my-2 rounded-sm">
@@ -50,7 +50,7 @@ const Signin = () => {
               secureTextEntry={false}
               placeholder="Enter Email"
               name="email"
-              className="p-4 text-xl text-gray-700"
+              className="p-4 text-xl text-gray-600"
             />
           </View>
           <View className="flex w-[90%] justify-center border border-gray-300 mx-auto my-2 rounded-sm">
@@ -58,7 +58,7 @@ const Signin = () => {
               secureTextEntry={true}
               placeholder="Choose Password"
               name="password"
-              className="p-4 text-xl text-gray-700"
+              className="p-4 text-xl text-gray-600"
             />
           </View>
           <View className="flex w-[90%] justify-center mx-auto my-1 rounded-sm">
@@ -68,7 +68,7 @@ const Signin = () => {
           </View>
 
           {/********* Signin Button View **********/}
-          <View className="w-[90%] mx-auto shadow-md bg-[#b5e48c] rounded-sm mt-12">
+          <View className="w-[90%] mx-auto shadow-md bg-primary rounded-sm mt-12">
             <TouchableOpacity>
               <Text className="text-center px-10 py-4 text-gray-700 font-bold text-xl rounded-full">
                 Create account
@@ -99,7 +99,7 @@ const Signin = () => {
                 <Icon name="facebook" size={25} color="#b5e48c" />
               </TouchableOpacity>
               <TouchableOpacity className="bg-[#34A0A4] p-4 w-[60px] h-[60px] rounded-full flex justify-center items-center">
-                <Icon name="twitter" size={25} color="#b5e48c" />
+                <Icon name="google" size={25} color="#b5e48c" />
               </TouchableOpacity>
               <TouchableOpacity className="bg-[#34A0A4] p-4 w-[60px] h-[60px] rounded-full flex justify-center items-center">
                 <Icon name="github" size={25} color="#b5e48c" />

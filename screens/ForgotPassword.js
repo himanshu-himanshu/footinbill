@@ -1,11 +1,11 @@
-import { Text, TextInput, View, TouchableOpacity } from "react-native";
+import { Text, TextInput, View, Image, TouchableOpacity } from "react-native";
 import React, { useLayoutEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-const Login = () => {
+const ForgotPassword = () => {
   const navigation = useNavigation();
   useLayoutEffect(() => {
     return () => {
@@ -28,46 +28,33 @@ const Login = () => {
         <View className="w-full h-full">
           {/********* Header View **********/}
           <View className="flex w-full justify-center items-center pt-8 pb-12">
+            <Image
+              source={require("../assets/forgot.png")}
+              className="h-40 w-40"
+            />
             <Text className="text-3xl font-Raleway font-semibold tracking-wide py-4">
-              Log in
+              Reset Password
             </Text>
             <Text className="font-light text-gray-700">
-              Please login to continue using our app
+              Enter your registered email to get verification code
             </Text>
           </View>
 
-          {/********* Email & Password View **********/}
+          {/********* Email View **********/}
           <View className="flex w-[90%] justify-center border border-gray-300 mx-auto my-2 rounded-sm">
             <TextInput
               secureTextEntry={false}
-              placeholder="Email"
+              placeholder="Your Email"
               name="email"
               className="p-4 text-xl text-gray-700"
             />
           </View>
-          <View className="flex w-[90%] justify-center border border-gray-300 mx-auto my-2 rounded-sm">
-            <TextInput
-              secureTextEntry={true}
-              placeholder="Password"
-              name="password"
-              className="p-4 text-xl text-gray-700"
-            />
-          </View>
 
-          {/********* Forgot password View **********/}
-          <View className="flex w-[90%] justify-end items-end mt-2 mx-auto">
-            <TouchableOpacity
-              onPress={() => navigation.navigate("ForgotPassword")}
-            >
-              <Text className="text-gray-400">Forgot Password?</Text>
-            </TouchableOpacity>
-          </View>
-
-          {/********* Login Button View **********/}
-          <View className="w-[90%] mx-auto shadow-md bg-primary rounded-sm mt-12">
+          {/********* OTP Button View **********/}
+          <View className="w-[90%] mx-auto shadow-md bg-primary rounded-sm mt-8">
             <TouchableOpacity>
               <Text className="text-center px-10 py-4 text-gray-700 font-bold text-xl rounded-full">
-                Log in
+                Send OTP
               </Text>
             </TouchableOpacity>
           </View>
@@ -86,29 +73,20 @@ const Login = () => {
               </Text>
             </TouchableOpacity>
           </View>
-
-          {/********* Social Media View **********/}
-          <View className="flex w-full justify-center items-center mt-24">
-            <Text className="text-gray-400 tracking-wide py-4">Or</Text>
-            <View className="flex flex-row space-x-4">
-              <TouchableOpacity className="bg-[#34A0A4] p-4 w-[60px] h-[60px] rounded-full flex justify-center items-center">
-                <Icon name="facebook" size={25} color="#b5e48c" />
-              </TouchableOpacity>
-              <TouchableOpacity className="bg-[#34A0A4] p-4 w-[60px] h-[60px] rounded-full flex justify-center items-center">
-                <Icon name="google" size={25} color="#b5e48c" />
-              </TouchableOpacity>
-              <TouchableOpacity className="bg-[#34A0A4] p-4 w-[60px] h-[60px] rounded-full flex justify-center items-center">
-                <Icon name="instagram" size={25} color="#b5e48c" />
-              </TouchableOpacity>
-            </View>
-          </View>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Login")}
+            className="flex flex-row items-center w-full justify-center mt-8 space-x-2 text-gray-500"
+          >
+            <Icon name="arrow-left" color="#777777" />
+            <Text className="text-gray-600">Back to Login</Text>
+          </TouchableOpacity>
         </View>
       </SafeAreaView>
     </View>
   );
 };
 
-export default Login;
+export default ForgotPassword;
 
 /***
  * OLD PROJECT CODE FOR LOGIN SCREEN

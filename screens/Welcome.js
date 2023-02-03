@@ -46,14 +46,14 @@ const Welcome = () => {
           </Text>
         </View>
         <View className=" p-4 flex flex-col justify-center items-center">
-          <View className="w-[70%] mb-4 border-2 border-[#b5e48c] shadow-md rounded-full">
+          <View className="w-[70%] mb-4 border-2 border-primary shadow-md rounded-full">
             <TouchableOpacity onPress={() => navigation.navigate("Login")}>
               <Text className="text-center px-10 py-4 text-gray-600 font-bold text-lg">
                 Log In
               </Text>
             </TouchableOpacity>
           </View>
-          <View className="w-[70%] shadow-md bg-[#b5e48c] rounded-full">
+          <View className="w-[70%] shadow-md bg-primary rounded-full">
             <TouchableOpacity onPress={() => navigation.navigate("Signin")}>
               <Text className="text-center px-10 py-4  text-gray-700 font-bold text-lg rounded-full">
                 Sign Up
