@@ -5,7 +5,7 @@ import { useFonts } from "expo-font";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-const Signin = () => {
+const SignUp = () => {
   const navigation = useNavigation();
   useLayoutEffect(() => {
     return () => {
@@ -29,7 +29,7 @@ const Signin = () => {
           {/********* Header View **********/}
           <View className="flex w-full justify-center items-center pt-8 pb-10">
             <Text className="text-3xl font-Raleway font-semibold tracking-wide py-4">
-              Sign in
+              Sign up
             </Text>
             <Text className="font-light text-gray-700">
               Please fill details below to create an account
@@ -101,9 +101,6 @@ const Signin = () => {
               <TouchableOpacity className="bg-[#34A0A4] p-4 w-[60px] h-[60px] rounded-full flex justify-center items-center">
                 <Icon name="google" size={25} color="#b5e48c" />
               </TouchableOpacity>
-              <TouchableOpacity className="bg-[#34A0A4] p-4 w-[60px] h-[60px] rounded-full flex justify-center items-center">
-                <Icon name="github" size={25} color="#b5e48c" />
-              </TouchableOpacity>
             </View>
           </View>
         </View>
@@ -112,4 +109,4 @@ const Signin = () => {
   );
 };
 
-export default Signin;
+export default SignUp;

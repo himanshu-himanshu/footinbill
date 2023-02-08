@@ -82,7 +82,7 @@ const Login = () => {
                 Don't have an account?
               </Text>
               <Text className="text-[#52b69a] font-bold tracking-wide">
-                Sign in
+                Sign up
               </Text>
             </TouchableOpacity>
           </View>
@@ -96,9 +96,6 @@ const Login = () => {
               </TouchableOpacity>
               <TouchableOpacity className="bg-[#34A0A4] p-4 w-[60px] h-[60px] rounded-full flex justify-center items-center">
                 <Icon name="google" size={25} color="#b5e48c" />
-              </TouchableOpacity>
-              <TouchableOpacity className="bg-[#34A0A4] p-4 w-[60px] h-[60px] rounded-full flex justify-center items-center">
-                <Icon name="instagram" size={25} color="#b5e48c" />
               </TouchableOpacity>
             </View>
           </View>
