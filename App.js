@@ -3,7 +3,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import Welcome from "./screens/Welcome";
 import Login from "./screens/Login";
-import Signin from "./screens/Signin";
+import Signup from "./screens/Signup";
 import ForgotPassword from "./screens/ForgotPassword";
 import VerifyOTP from "./screens/VerifyOTP";
 
@@ -21,7 +21,7 @@ export default function App() {
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
         <Stack.Screen name="VerifyOTP" component={VerifyOTP} />
-        <Stack.Screen name="Signin" component={Signin} />
+        <Stack.Screen name="Signup" component={Signup} />
       </Stack.Navigator>
     </NavigationContainer>
   );
